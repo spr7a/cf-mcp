@@ -1,3 +1,15 @@
+Metadata-Version: 2.4
+Name: cf-mcp-orange
+Version: 1.0.4
+Summary: A complete Codeforces MCP toolset for AI agents
+Author-email: supriya <supriya81205@gmail.com>
+License: MIT
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: fastmcp>=0.1.2
+Requires-Dist: httpx>=0.27.0
+Requires-Dist: beautifulsoup4>=4.12.0
+
 # cf-mcp-orange 🚀
 
 [![PyPI version](https://img.shields.io/pypi/v/cf-mcp-orange)](https://pypi.org/project/cf-mcp-orange/)
@@ -17,14 +29,6 @@ Designed to supercharge AI coding assistants like **Cline** and **Claude Desktop
 6. **`get_random_practice`** – A completely random problem within `+/- 300` of a user's current rating.
 7. **`get_upsolve`** – Analyzes a user's last 10 contests and recommends unsolved problems within their rating range.
 8. **`get_status`** – Summarizes the last 1000 submissions (AC/WA/TLE counts) and the 20 most recent attempts.
-
----
-
-## 📦 Changelog
-
-### v1.0.6 (2026-07-04)
-- 🐛 **Fixed**: `ModuleNotFoundError` when running the server — changed absolute import to relative import in `get_problem.py`
-- ✅ **Verified**: All 8 tools tested and working (get_user, compare_user, get_problemlist, get_problem, get_practiceproblems, get_random_practice, get_upsolve, get_status)
 
 ---
 

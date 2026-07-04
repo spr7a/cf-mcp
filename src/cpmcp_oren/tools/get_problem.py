@@ -1,6 +1,6 @@
 import httpx
 from bs4 import BeautifulSoup
-from tools.get_problemlist import fetch_all_problems
+from .get_problemlist import fetch_all_problems
 
 # Define a standard browser User-Agent to bypass Codeforces bot protection
 HEADERS = {

@@ -1,13 +1,25 @@
-# cf-mcp-orange 🚀
+Metadata-Version: 2.4
+Name: cpmcp-oren
+Version: 1.0.1
+Summary: A complete Codeforces MCP toolset for AI agents
+Author-email: Your Name <your@email.com>
+License: MIT
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: fastmcp>=0.1.2
+Requires-Dist: httpx>=0.27.0
+Requires-Dist: beautifulsoup4>=4.12.0
 
-[![PyPI version](https://img.shields.io/pypi/v/cf-mcp-orange)](https://pypi.org/project/cf-mcp-orange/)
+# cpmcp-oren 🚀
+
+[![PyPI version](https://img.shields.io/pypi/v/cpmcp-oren)](https://pypi.org/project/cpmcp-oren/)
 
 A **complete, all-in-one MCP (Model Context Protocol) server** for Codeforces. 
 Designed to supercharge AI coding assistants like **Cline** and **Claude Desktop**.
 
 ---
 
-## ✨ Features (9 Powerful Tools)
+## ✨ Features (10 Powerful Tools)
 
 1. **`get_user`** – Fetch a detailed profile (rating, max rating, last 5 contests, problem stats by difficulty, top 10 categories).
 2. **`compare_user`** – Side-by-side comparison of two Codeforces users.
@@ -17,14 +29,8 @@ Designed to supercharge AI coding assistants like **Cline** and **Claude Desktop
 6. **`get_random_practice`** – A completely random problem within `+/- 300` of a user's current rating.
 7. **`get_upsolve`** – Analyzes a user's last 10 contests and recommends unsolved problems within their rating range.
 8. **`get_status`** – Summarizes the last 1000 submissions (AC/WA/TLE counts) and the 20 most recent attempts.
-
----
-
-## 📦 Changelog
-
-### v1.0.6 (2026-07-04)
-- 🐛 **Fixed**: `ModuleNotFoundError` when running the server — changed absolute import to relative import in `get_problem.py`
-- ✅ **Verified**: All 8 tools tested and working (get_user, compare_user, get_problemlist, get_problem, get_practiceproblems, get_random_practice, get_upsolve, get_status)
+9. **`get_catalog`** – Searches and fetches the latest official educational articles from the Codeforces Catalog.
+10. **`submit_solution`** – (*Optional*) Submits code to a problem via the authenticated API.
 
 ---
 
@@ -35,9 +41,9 @@ You don't need to clone or manually install anything! Just add this to your `cli
 ```json
 {
   "mcpServers": {
-    "cf-mcp-orange": {
+    "cpmcp-oren": {
       "command": "uvx",
-      "args": ["cf-mcp-orange"]
+      "args": ["cpmcp-oren"]
     }
   }
 }

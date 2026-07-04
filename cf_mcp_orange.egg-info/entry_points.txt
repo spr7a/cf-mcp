@@ -1,0 +1,2 @@
+[console_scripts]
+cf-mcp-orange = cpmcp_oren:main

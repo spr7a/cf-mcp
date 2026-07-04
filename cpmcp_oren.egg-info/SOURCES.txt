@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+cpmcp_oren.egg-info/PKG-INFO
+cpmcp_oren.egg-info/SOURCES.txt
+cpmcp_oren.egg-info/dependency_links.txt
+cpmcp_oren.egg-info/requires.txt
+cpmcp_oren.egg-info/top_level.txt
+src/cpmcp_oren/__init__.py
+src/cpmcp_oren/__main__.py

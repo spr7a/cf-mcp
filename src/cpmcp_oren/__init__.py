@@ -1,18 +1,17 @@
-import asyncio
 from fastmcp import FastMCP
 
-# Import your tool logic from the 'tools' package
-from tools.get_user import fetch_and_parse_user_data
-from tools.compare_user import compare_users_data
-from tools.get_problemlist import get_filtered_problems
-from tools.get_problem import get_problem_details
-from tools.get_practice import get_practice_plan
-from tools.get_random_problem import get_random_problem_suggestion
-from tools.get_upsolve import get_upsolve_suggestions
-from tools.get_status import get_user_submission_status
+# Import your tool logic from the 'tools' package (Relative imports)
+from .tools.get_user import fetch_and_parse_user_data
+from .tools.compare_user import compare_users_data
+from .tools.get_problemlist import get_filtered_problems
+from .tools.get_problem import get_problem_details
+from .tools.get_practice import get_practice_plan
+from .tools.get_random_problem import get_random_problem_suggestion
+from .tools.get_upsolve import get_upsolve_suggestions
+from .tools.get_status import get_user_submission_status
 
 # Initialize the MCP Server
-mcp = FastMCP("Codeforces Universal Tool")
+mcp = FastMCP("cpmcp-oren")
 
 # ==========================================
 # TOOL 1: Get Single User Profile
@@ -161,14 +160,16 @@ async def get_problem(contest_id: int, index: str) -> str:
         output += f"📊 **Rating:** `{data['rating']}`  |  **Topics:** `{', '.join(data['topics'])}`\n\n"
         output += f"---\n\n"
            
-        output += "---\n\n"
         output += "**Problem Statement:**\n\n"
         output += data['statement']
         
         return output
     except Exception as e:
         return f"❌ Error fetching problem: {str(e)}"
-# --- TOOL 5: Get Practice Problems ---
+
+# ==========================================
+# TOOL 5: Get Practice Problems
+# ==========================================
 @mcp.tool()
 async def get_practiceproblems(username: str) -> str:
     """
@@ -203,7 +204,10 @@ async def get_practiceproblems(username: str) -> str:
         output += f"   - Topics: {tags}\n"
         
     return output
-# --- TOOL 7: Get Random Practice Problem ---
+
+# ==========================================
+# TOOL 7: Get Random Practice Problem
+# ==========================================
 @mcp.tool()
 async def get_random_practice(username: str) -> str:
     """
@@ -231,7 +235,10 @@ async def get_random_practice(username: str) -> str:
     output += f"- *(Generated from range: Current Rating ± 300)*\n"
     
     return output
-# --- TOOL 8: Get Upsolve Problems ---
+
+# ==========================================
+# TOOL 8: Get Upsolve Problems
+# ==========================================
 @mcp.tool()
 async def get_upsolve(username: str) -> str:
     """
@@ -268,7 +275,10 @@ async def get_upsolve(username: str) -> str:
         output += f"- **Why upsolve?** *{item['reason']}*\n\n"
 
     return output
-# --- TOOL 10: Get User Submission Status ---
+
+# ==========================================
+# TOOL 10: Get User Submission Status
+# ==========================================
 @mcp.tool()
 async def get_status(username: str) -> str:
     """
@@ -292,7 +302,7 @@ async def get_status(username: str) -> str:
 
     return output
 # ==========================================
-# RUN THE SERVER
+# MAIN ENTRY POINT
 # ==========================================
-if __name__ == "__main__":
+def main():
     mcp.run(transport="stdio")
