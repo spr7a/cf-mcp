@@ -1,0 +1,29 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / build
+dist/
+*.egg-info/
+*.egg
+build/
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# IDE & editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# PyPI credentials
+.pypirc
