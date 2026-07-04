@@ -103,12 +103,7 @@ cf-mcp/
 
 ## How It Works
 
-All tools use the [Codeforces API](https://codeforces.com/apiHelp) under the hood. The server makes parallel async HTTP requests (via `httpx`) to minimize latency. Key design decisions:
-
-- **Concurrent fetching**: User info, contest history, and submissions are fetched simultaneously using `asyncio.gather`.
-- **Distinct problem counting**: Only unique problems (by `contestId` + `index`) are counted in solved stats.
-- **Difficulty & category breakdown**: Solved problems are grouped by rating and tags for detailed analytics.
-- **Practice recommendations**: Weak topics are identified by comparing a user's solved categories against the global problem distribution.
+The entire tool suite is powered by the official Codeforces API, which acts as the backbone for all data operations. To ensure lightning-fast performance, the server uses Python's httpx library to issue asynchronous, non-blocking network calls, allowing multiple requests to run in parallel instead of waiting for each one sequentially.
 
 ---
 
