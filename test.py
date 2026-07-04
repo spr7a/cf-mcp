@@ -9,6 +9,7 @@ from tools.get_problem import get_problem_details
 from tools.get_practice import get_practice_plan
 from tools.get_random_problem import get_random_problem_suggestion
 from tools.get_upsolve import get_upsolve_suggestions
+from tools.get_status import get_user_submission_status
 
 # Initialize the MCP Server
 mcp = FastMCP("Codeforces Universal Tool")
@@ -265,6 +266,29 @@ async def get_upsolve(username: str) -> str:
         output += f"- **Rating:** {rating}\n"
         output += f"- **Tags:** {tags}\n"
         output += f"- **Why upsolve?** *{item['reason']}*\n\n"
+
+    return output
+# --- TOOL 10: Get User Submission Status ---
+@mcp.tool()
+async def get_status(username: str) -> str:
+    """
+    Fetch the last 1000 submissions of a user. Provides a summary of their 
+    AC/WA/TLE count, and details of their 20 most recent submissions.
+    Great for debugging how a user is performing on their current attempts.
+    """
+    result = await get_user_submission_status(username)
+    
+    if result["status"] == "error":
+        return f"❌ Error fetching submissions: {result['message']}"
+
+    output = f"**📊 Submission Status for `{username}`**\n\n"
+    output += result["summary"] + "\n"
+    
+    output += "**🕒 Most Recent 20 Submissions:**\n"
+    for sub in result["recent_submissions"]:
+        output += f"- **[`{sub['prob_name']}`]({sub['url']})**\n"
+        output += f"  - Verdict: {sub['verdict']}\n"
+        output += f"  - Time: {sub['time']} | Memory: {sub['memory']}\n"
 
     return output
 # ==========================================
